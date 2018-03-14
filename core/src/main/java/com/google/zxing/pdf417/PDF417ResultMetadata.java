@@ -54,7 +54,7 @@ public final class PDF417ResultMetadata {
   }
 
   /**
-   * Use dedicated fields
+   * @deprecated use dedicated already parsed fields
    * @return always null
    */
   @Deprecated
@@ -62,6 +62,9 @@ public final class PDF417ResultMetadata {
     return null;
   }
 
+  /**
+   * @deprecated no replacement
+   */
   @Deprecated
   public void setOptionalData(int[] optionalData) {
   }
