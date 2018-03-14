@@ -62,7 +62,7 @@ final class DecodedBitStreamParser {
   private static final int MACRO_PDF417_OPTIONAL_FIELD_SENDER = 3;
   private static final int MACRO_PDF417_OPTIONAL_FIELD_ADDRESSEE = 4;
   private static final int MACRO_PDF417_OPTIONAL_FIELD_FILE_SIZE = 5;
-  private static final int MACRO_PDF417_OPTIONAL_FIELD_CHECKSUM = 5;
+  private static final int MACRO_PDF417_OPTIONAL_FIELD_CHECKSUM = 6;
 
   private static final int PL = 25;
   private static final int LL = 27;
@@ -203,6 +203,21 @@ final class DecodedBitStreamParser {
                         StringBuilder segmentCount = new StringBuilder();
                         codeIndex = numericCompaction(codewords, codeIndex + 1, segmentCount);
                         resultMetadata.setSegmentCount(Integer.parseInt(segmentCount.toString()));
+                        break;
+                    case MACRO_PDF417_OPTIONAL_FIELD_TIME_STAMP:
+                        StringBuilder timestamp = new StringBuilder();
+                        codeIndex = numericCompaction(codewords, codeIndex + 1, timestamp);
+                        resultMetadata.setTimestamp(Long.parseLong(timestamp.toString()));
+                        break;
+                    case MACRO_PDF417_OPTIONAL_FIELD_CHECKSUM:
+                        StringBuilder checksum = new StringBuilder();
+                        codeIndex = numericCompaction(codewords, codeIndex + 1, checksum);
+                        resultMetadata.setChecksum(Integer.parseInt(checksum.toString()));
+                        break;
+                    case MACRO_PDF417_OPTIONAL_FIELD_FILE_SIZE:
+                        StringBuilder fileSize = new StringBuilder();
+                        codeIndex = numericCompaction(codewords, codeIndex + 1, fileSize);
+                        resultMetadata.setFileSize(Long.parseLong(fileSize.toString()));
                         break;
                     default:
                         throw FormatException.getFormatInstance();

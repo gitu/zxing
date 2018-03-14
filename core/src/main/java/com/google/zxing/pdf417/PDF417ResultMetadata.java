@@ -28,6 +28,9 @@ public final class PDF417ResultMetadata {
   private String sender;
   private String addressee;
   private String fileName;
+  private long fileSize = -1;
+  private long timestamp = -1;
+  private int checksum = -1;
 
   /**
    * The Segment ID represents the segment of the whole file distributed over different symbols.
@@ -108,6 +111,10 @@ public final class PDF417ResultMetadata {
     this.addressee = addressee;
   }
 
+  /**
+   * Filename of the encoded file
+   * @return filename
+   */
   public String getFileName() {
     return fileName;
   }
@@ -115,4 +122,41 @@ public final class PDF417ResultMetadata {
   public void setFileName(String fileName) {
     this.fileName = fileName;
   }
+
+  /**
+   * filesize in bytes of the encoded file
+   * @return filesize in bytes, -1 if not set
+   */
+  public long getFileSize() {
+    return fileSize;
+  }
+
+  public void setFileSize(long fileSize) {
+    this.fileSize = fileSize;
+  }
+
+ /**
+  * 16-bit CRC checksum using CCITT-16
+  * @return crc checksum, -1 if not set
+  */
+  public int getChecksum() {
+    return checksum;
+  }
+
+  public void setChecksum(int checksum) {
+    this.checksum = checksum;
+  }
+
+  /**
+   * unix epock timestamp, elapsed seconds since 1970-01-01
+   * @return elapsed seconds, -1 if not set
+   */
+  public long getTimestamp() {
+      return timestamp;
+  }
+
+  public void setTimestamp(long timestamp) {
+    this.timestamp = timestamp;
+  }
+
 }
