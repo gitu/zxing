@@ -181,7 +181,7 @@ final class DecodedBitStreamParser {
         boolean end = false;
         while ((codeIndex < codewords[0]) && !end) {
           int code = codewords[codeIndex++];
-          if (code < TEXT_COMPACTION_MODE_LATCH) {
+          if (code < TEXT_COMPACTION_MODE_LATCH || code == BEGIN_MACRO_PDF417_OPTIONAL_FIELD) {
             additionalOptionCodeWords[additionalOptionCodeWordsIndex++] = code;
           } else {
             switch (code) {

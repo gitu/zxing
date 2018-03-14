@@ -16,36 +16,20 @@
 
 package com.google.zxing.pdf417;
 
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.BinaryBitmap;
-import com.google.zxing.BufferedImageLuminanceSource;
-import com.google.zxing.DecodeHintType;
-import com.google.zxing.LuminanceSource;
-import com.google.zxing.ReaderException;
-import com.google.zxing.Result;
-import com.google.zxing.ResultMetadataType;
+import com.google.zxing.*;
 import com.google.zxing.common.AbstractBlackBoxTestCase;
 import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.common.TestResult;
-
 import com.google.zxing.multi.MultipleBarcodeReader;
 import org.junit.Test;
 
 import javax.imageio.ImageIO;
-
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.EnumMap;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
 import java.util.logging.Logger;
 
@@ -55,16 +39,16 @@ import java.util.logging.Logger;
  * 
  * @author Guenther Grau
  */
-public final class PDF417BlackBox4TestCase extends AbstractBlackBoxTestCase {
+public final class PDF417BlackBox5TestCase extends AbstractBlackBoxTestCase {
   private static final Logger log = Logger.getLogger(AbstractBlackBoxTestCase.class.getSimpleName());
 
   private final MultipleBarcodeReader barcodeReader = new PDF417Reader();
 
   private final List<TestResult> testResults = new ArrayList<>();
 
-  public PDF417BlackBox4TestCase() {
-    super("src/test/resources/blackbox/pdf417-4", null, BarcodeFormat.PDF_417);
-    testResults.add(new TestResult(3, 3, 0, 0, 0.0f));
+  public PDF417BlackBox5TestCase() {
+    super("src/test/resources/blackbox/pdf417-5", null, BarcodeFormat.PDF_417);
+    testResults.add(new TestResult(1, 1, 0, 0, 0.0f));
   }
 
   @Test
