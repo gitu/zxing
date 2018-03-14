@@ -54,6 +54,20 @@ public final class PDF417ResultMetadata {
   }
 
   /**
+   * Use dedicated fields
+   * @return always null
+   */
+  @Deprecated
+  public int[] getOptionalData() {
+    return null;
+  }
+
+  @Deprecated
+  public void setOptionalData(int[] optionalData) {
+  }
+
+
+  /**
    * @return true if it is the last segment
    */
   public boolean isLastSegment() {
