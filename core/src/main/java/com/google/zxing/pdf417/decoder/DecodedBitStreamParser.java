@@ -25,7 +25,6 @@ import java.io.ByteArrayOutputStream;
 import java.math.BigInteger;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
 
 /**
  * <p>This class contains the methods for decoding the PDF417 codewords.</p>
@@ -180,29 +179,29 @@ final class DecodedBitStreamParser {
     codeIndex = textCompaction(codewords, codeIndex, fileId);
     resultMetadata.setFileId(fileId.toString());
 
-    while ((codeIndex < codewords[0])) {
+    while (codeIndex < codewords[0]) {
         switch (codewords[codeIndex]) {
             case BEGIN_MACRO_PDF417_OPTIONAL_FIELD:
                 codeIndex++;
                 switch (codewords[codeIndex]) {
                     case MACRO_PDF417_OPTIONAL_FIELD_FILE_NAME:
                         StringBuilder fileName = new StringBuilder();
-                        codeIndex = textCompaction(codewords, codeIndex+1, fileName);
+                        codeIndex = textCompaction(codewords, codeIndex + 1, fileName);
                         resultMetadata.setFileName(fileName.toString());
                         break;
                     case MACRO_PDF417_OPTIONAL_FIELD_SENDER:
                         StringBuilder sender = new StringBuilder();
-                        codeIndex = textCompaction(codewords, codeIndex+1, sender);
+                        codeIndex = textCompaction(codewords, codeIndex + 1, sender);
                         resultMetadata.setSender(sender.toString());
                         break;
                     case MACRO_PDF417_OPTIONAL_FIELD_ADDRESSEE:
                         StringBuilder addressee = new StringBuilder();
-                        codeIndex = textCompaction(codewords, codeIndex+1, addressee);
+                        codeIndex = textCompaction(codewords, codeIndex + 1, addressee);
                         resultMetadata.setAddressee(addressee.toString());
                         break;
                     case MACRO_PDF417_OPTIONAL_FIELD_SEGMENT_COUNT:
                         StringBuilder segmentCount = new StringBuilder();
-                        codeIndex = numericCompaction(codewords, codeIndex+1, segmentCount);
+                        codeIndex = numericCompaction(codewords, codeIndex + 1, segmentCount);
                         resultMetadata.setSegmentCount(Integer.parseInt(segmentCount.toString()));
                         break;
                     default:
