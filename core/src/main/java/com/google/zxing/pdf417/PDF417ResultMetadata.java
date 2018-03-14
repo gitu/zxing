@@ -23,9 +23,16 @@ public final class PDF417ResultMetadata {
 
   private int segmentIndex;
   private String fileId;
-  private int[] optionalData;
   private boolean lastSegment;
+  private int segmentCount = -1;
+  private String sender;
+  private String addressee;
+  private String fileName;
 
+  /**
+   * The Segment ID represents the segment of the whole file distributed over different symbols.
+   * @return File segment index
+   */
   public int getSegmentIndex() {
     return segmentIndex;
   }
@@ -34,6 +41,10 @@ public final class PDF417ResultMetadata {
     this.segmentIndex = segmentIndex;
   }
 
+  /**
+   * Is the same for each related PDF417 symbol
+   * @return File ID
+   */
   public String getFileId() {
     return fileId;
   }
@@ -42,14 +53,9 @@ public final class PDF417ResultMetadata {
     this.fileId = fileId;
   }
 
-  public int[] getOptionalData() {
-    return optionalData;
-  }
-
-  public void setOptionalData(int[] optionalData) {
-    this.optionalData = optionalData;
-  }
-
+  /**
+   * @return true if it is the last segment
+   */
   public boolean isLastSegment() {
     return lastSegment;
   }
@@ -58,4 +64,38 @@ public final class PDF417ResultMetadata {
     this.lastSegment = lastSegment;
   }
 
+  /**
+   * @return count of segments, -1 if not set
+   */
+  public int getSegmentCount() {
+    return segmentCount;
+  }
+
+  public void setSegmentCount(int segmentCount) {
+    this.segmentCount = segmentCount;
+  }
+
+  public String getSender() {
+    return sender;
+  }
+
+  public void setSender(String sender) {
+    this.sender = sender;
+  }
+
+  public String getAddressee() {
+    return addressee;
+  }
+
+  public void setAddressee(String addressee) {
+    this.addressee = addressee;
+  }
+
+  public String getFileName() {
+    return fileName;
+  }
+
+  public void setFileName(String fileName) {
+    this.fileName = fileName;
+  }
 }
